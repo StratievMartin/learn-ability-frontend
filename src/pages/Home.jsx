@@ -8,6 +8,7 @@ function Home() {
   useEffect(() => {
     axios.get('courses.json').then((res) => {
       const { data } = res
+
       console.log(data)
       setCourses(data)
     })
@@ -17,9 +18,10 @@ function Home() {
     <div>
       <h1>This is the home page</h1>
       <Link to="about">Click to view our about page</Link>
+
       <div>
         {courses.map((course) => (
-          <div>
+          <div key={course.id}>
             <p> {course.id}</p>
             <p> {course.name}</p>
             <p> {course.description}</p>
