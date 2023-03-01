@@ -1,31 +1,33 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import axios from '../services/api/axiosInstance'
+import { HeaderMegaMenu } from '../components/parts/Header'
+import { getAllCourses } from '../services/courseService'
 
 function Home() {
   const [courses, setCourses] = useState([])
 
   useEffect(() => {
-    axios.get('courses.json').then((res) => {
-      const { data } = res
-
-      console.log(data)
-      setCourses(data)
+    getAllCourses().then((res) => {
+      setCourses(res.data)
     })
   }, [])
 
-  return (
+return (
     <div>
+      <HeaderMegaMenu></HeaderMegaMenu>
       <h1>This is the home page</h1>
       <Link to="about">Click to view our about page</Link>
+      <Link to="courses">
+        <button>Create</button>
+      </Link>
 
       <div>
         {courses.map((course) => (
-          <div key={course.id}>
+          <Link to={`/courses/${course.id}`} key={course.id}>
             <p> {course.id}</p>
-            <p> {course.name}</p>
+            <p> {course.title}</p>
             <p> {course.description}</p>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
