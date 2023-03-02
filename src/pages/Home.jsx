@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { HeaderMegaMenu } from '../components/parts/Header'
-import { getAllCourses } from '../services/courseService'
+import {getAllCourses} from "../services/courseService"
+import { HeaderMegaMenu } from '../modules/header/Header'
 
 function Home() {
   const [courses, setCourses] = useState([])
