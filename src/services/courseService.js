@@ -1,4 +1,4 @@
-import axios from '../services/api/axiosInstance'
+import axios from '../utils/axios/axios'
 
 const apiUrl = `${import.meta.env.VITE_API_URL}/courses`
 

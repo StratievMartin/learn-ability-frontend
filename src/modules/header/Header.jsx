@@ -16,8 +16,8 @@ import {
   Drawer,
   Collapse,
   ScrollArea,
-} from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
+} from '@mantine/core'
+import { useDisclosure } from '@mantine/hooks'
 import {
   IconNotification,
   IconCode,
@@ -26,7 +26,9 @@ import {
   IconFingerprint,
   IconCoin,
   IconChevronDown,
-} from '@tabler/icons';
+} from '@tabler/icons'
+import { Link } from 'react-router-dom'
+import Input from '../common/components/Input'
 
 const useStyles = createStyles((theme) => ({
   link: {
@@ -48,7 +50,10 @@ const useStyles = createStyles((theme) => ({
     },
 
     ...theme.fn.hover({
-      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
+      backgroundColor:
+        theme.colorScheme === 'dark'
+          ? theme.colors.dark[6]
+          : theme.colors.gray[0],
     }),
   },
 
@@ -58,14 +63,20 @@ const useStyles = createStyles((theme) => ({
     borderRadius: theme.radius.md,
 
     ...theme.fn.hover({
-      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[0],
+      backgroundColor:
+        theme.colorScheme === 'dark'
+          ? theme.colors.dark[7]
+          : theme.colors.gray[0],
     }),
 
     '&:active': theme.activeStyles,
   },
 
   dropdownFooter: {
-    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[0],
+    backgroundColor:
+      theme.colorScheme === 'dark'
+        ? theme.colors.dark[7]
+        : theme.colors.gray[0],
     margin: -theme.spacing.md,
     marginTop: theme.spacing.sm,
     padding: `${theme.spacing.md}px ${theme.spacing.md * 2}px`,
@@ -86,7 +97,7 @@ const useStyles = createStyles((theme) => ({
       display: 'none',
     },
   },
-}));
+}))
 
 const mockdata = [
   {
@@ -119,12 +130,13 @@ const mockdata = [
     title: 'Notifications',
     description: 'Combusken battles with the intensely hot flames it spews',
   },
-];
+]
 
-export function HeaderMegaMenu() {
-  const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
-  const [linksOpened, { toggle: toggleLinks }] = useDisclosure(false);
-  const { classes, theme } = useStyles();
+export function AppHeader() {
+  const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
+    useDisclosure(false)
+  const [linksOpened, { toggle: toggleLinks }] = useDisclosure(false)
+  const { classes, theme } = useStyles()
 
   const links = mockdata.map((item) => (
     <UnstyledButton className={classes.subLink} key={item.title}>
@@ -142,7 +154,7 @@ export function HeaderMegaMenu() {
         </div>
       </Group>
     </UnstyledButton>
-  ));
+  ))
 
   return (
     <Box pb={120}>
@@ -150,18 +162,31 @@ export function HeaderMegaMenu() {
         <Group position="apart" sx={{ height: '100%' }}>
           {/* <MantineLogo size={30} /> */}
 
-          <Group sx={{ height: '100%' }} spacing={0} className={classes.hiddenMobile}>
-            <a href="#" className={classes.link}>
+          <Group
+            sx={{ height: '100%' }}
+            spacing={0}
+            className={classes.hiddenMobile}
+          >
+            <Link to="/" className={classes.link}>
               Home
-            </a>
-            <HoverCard width={600} position="bottom" radius="md" shadow="md" withinPortal>
+            </Link>
+            <HoverCard
+              width={600}
+              position="bottom"
+              radius="md"
+              shadow="md"
+              withinPortal
+            >
               <HoverCard.Target>
                 <a href="#" className={classes.link}>
                   <Center inline>
                     <Box component="span" mr={5}>
                       Features
                     </Box>
-                    <IconChevronDown size={16} color={theme.fn.primaryColor()} />
+                    <IconChevronDown
+                      size={16}
+                      color={theme.fn.primaryColor()}
+                    />
                   </Center>
                 </a>
               </HoverCard.Target>
@@ -199,20 +224,31 @@ export function HeaderMegaMenu() {
                 </div>
               </HoverCard.Dropdown>
             </HoverCard>
-            <a href="#" className={classes.link}>
-              Learn
-            </a>
-            <a href="#" className={classes.link}>
-              Academy
-            </a>
-          </Group>
 
+            <Link to="courses" className={classes.link}>
+              Create Course
+            </Link>
+          </Group>
           <Group className={classes.hiddenMobile}>
-            <Button variant="default">Log in</Button>
-            <Button>Sign up</Button>
+            <Input />
+          </Group>
+          <Group className={classes.hiddenMobile}>
+            <Link to="profile" className={classes.link}>
+              Profile
+            </Link>
+            <Link to="login" style={{ color: 'black' }}>
+              <Button variant="default">Log in</Button>
+            </Link>
+            <Link to="register" style={{ color: 'white' }}>
+              <Button>Sign up</Button>
+            </Link>
           </Group>
 
-          <Burger opened={drawerOpened} onClick={toggleDrawer} className={classes.hiddenDesktop} />
+          <Burger
+            opened={drawerOpened}
+            onClick={toggleDrawer}
+            className={classes.hiddenDesktop}
+          />
         </Group>
       </Header>
 
@@ -226,11 +262,14 @@ export function HeaderMegaMenu() {
         zIndex={1000000}
       >
         <ScrollArea sx={{ height: 'calc(100vh - 60px)' }} mx="-md">
-          <Divider my="sm" color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'} />
+          <Divider
+            my="sm"
+            color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'}
+          />
 
-          <a href="#" className={classes.link}>
+          <Link to="/" className={classes.link}>
             Home
-          </a>
+          </Link>
           <UnstyledButton className={classes.link} onClick={toggleLinks}>
             <Center inline>
               <Box component="span" mr={5}>
@@ -247,7 +286,10 @@ export function HeaderMegaMenu() {
             Academy
           </a>
 
-          <Divider my="sm" color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'} />
+          <Divider
+            my="sm"
+            color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'}
+          />
 
           <Group position="center" grow pb="xl" px="md">
             <Button variant="default">Log in</Button>
@@ -256,5 +298,5 @@ export function HeaderMegaMenu() {
         </ScrollArea>
       </Drawer>
     </Box>
-  );
+  )
 }

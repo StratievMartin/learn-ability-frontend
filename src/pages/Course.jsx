@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import CourseContentList from '../modules/course/CourseContentList'
 import {
   getCourse,
   deleteCourse,
@@ -7,7 +8,7 @@ import {
   updateCourse,
 } from '../services/courseService'
 
-function Home() {
+export default function Course() {
   const [course, setCourse] = useState({
     id: '',
     title: '',
@@ -50,56 +51,59 @@ function Home() {
   return (
     <div>
       <h1>Course</h1>
-      <Link to="/">Back to home</Link>
-      <form onSubmit={onFormSubmit}>
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         <div>
-          <label htmlFor="title">Title</label>
-          <input
-            onChange={onInputChange}
-            value={course.title}
-            type="text"
-            name="title"
-            id="title"
-            placeholder="Title..."
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="description">Description</label>
-          <input
-            onChange={onInputChange}
-            value={course.description}
-            type="text"
-            name="description"
-            id="description"
-            placeholder="Description..."
-            required
-          />
-        </div>
-        {error ? <span style={{ color: 'red' }}>{error}</span> : ''}
+          <Link to="/">Back to home</Link>
+          <form onSubmit={onFormSubmit}>
+            <div>
+              <label htmlFor="title">Title</label>
+              <input
+                onChange={onInputChange}
+                value={course.title}
+                type="text"
+                name="title"
+                id="title"
+                placeholder="Title..."
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="description">Description</label>
+              <input
+                onChange={onInputChange}
+                value={course.description}
+                type="text"
+                name="description"
+                id="description"
+                placeholder="Description..."
+                required
+              />
+            </div>
+            {error ? <span style={{ color: 'red' }}>{error}</span> : ''}
 
-        <div>
-          <button
-            onClick={() =>
-              params.id ? updateCourseHandler() : addCourseHandler()
-            }
-          >
-            Save
-          </button>
+            <div>
+              <button
+                onClick={() =>
+                  params.id ? updateCourseHandler() : addCourseHandler()
+                }
+              >
+                Save
+              </button>
+            </div>
+          </form>
+          {params.id && (
+            <div>
+              <p
+                onClick={() => deleteCourseHandler(course.id)}
+                style={{ color: 'red', cursor: 'pointer' }}
+              >
+                X
+              </p>
+            </div>
+          )}
         </div>
-      </form>
-      {params.id && (
-        <div>
-          <p
-            onClick={() => deleteCourseHandler(course.id)}
-            style={{ color: 'red', cursor: 'pointer' }}
-          >
-            X
-          </p>
-        </div>
-      )}
+        <CourseContentList />ƒ
+      </div>
     </div>
   )
 }
-
-export default Home

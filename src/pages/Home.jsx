@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import {getAllCourses} from "../services/courseService"
-import { HeaderMegaMenu } from '../modules/header/Header'
+import { getAllCourses } from '../services/courseService'
+import { CardsCarousel } from '../modules/common/components/Carousel'
+import { ArticlesCardsGrid } from '../modules/common/components/CardsGrid'
+import HeaderLanding from '../modules/header/components/HeaderLanding'
 
-function Home() {
+export default function Home() {
   const [courses, setCourses] = useState([])
 
   useEffect(() => {
@@ -12,26 +13,11 @@ function Home() {
     })
   }, [])
 
-return (
+  return (
     <div>
-      <HeaderMegaMenu></HeaderMegaMenu>
-      <h1>This is the home page</h1>
-      <Link to="about">Click to view our about page</Link>
-      <Link to="courses">
-        <button>Create</button>
-      </Link>
-
-      <div>
-        {courses.map((course) => (
-          <Link to={`/courses/${course.id}`} key={course.id}>
-            <p> {course.id}</p>
-            <p> {course.title}</p>
-            <p> {course.description}</p>
-          </Link>
-        ))}
-      </div>
+      <HeaderLanding/>
+      <CardsCarousel data={courses} />
+      <ArticlesCardsGrid />
     </div>
   )
 }
-
-export default Home
