@@ -232,14 +232,14 @@ export function AppHeader() {
             <Link to="courses" className={classes.link}>
               Create Course
             </Link>
+            <Link to="profile" className={classes.link}>
+              Profile
+            </Link>
           </Group>
           <Group className={classes.hiddenTablet}>
             <Input />
           </Group>
           <Group className={classes.hiddenMobile}>
-            <Link to="profile" className={classes.link}>
-              Profile
-            </Link>
             <Link to="login" style={{ color: 'black' }}>
               <Button variant="default">Log in</Button>
             </Link>

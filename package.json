@@ -16,8 +16,6 @@
     "@mantine/form": "^5.10.4",
     "@mantine/hooks": "^5.10.4",
     "@mantine/modals": "^5.10.4",
-    "@mantine/prism": "^5.10.4",
-    "@mantine/spotlight": "^5.10.4",
     "@mantine/tiptap": "^5.10.4",
     "@tabler/icons": "1.119.0",
     "@tabler/icons-react": "^2.7.0",

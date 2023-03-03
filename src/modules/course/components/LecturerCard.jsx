@@ -1,6 +1,8 @@
 import { Avatar, Text, Button, Paper } from '@mantine/core'
 
-export default function LecturerCard({ avatar, name, email, job }) {
+export default function LecturerCard({lecturerData}) {
+  const { avatar, name, email, job } = lecturerData
+  
   return (
     <Paper
       radius="md"

@@ -6,7 +6,7 @@ import { useState } from 'react'
 import { useHotkeys } from '@mantine/hooks'
 
 export default function Layout() {
-  const [colorScheme, setColorScheme] = useState('light')
+  const [colorScheme, setColorScheme] = useState('dark')
   const toggleColorScheme = (value) =>
     setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'))
   useHotkeys([['mod+J', () => toggleColorScheme()]])
