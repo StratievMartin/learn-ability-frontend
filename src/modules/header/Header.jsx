@@ -29,6 +29,7 @@ import {
 } from '@tabler/icons'
 import { Link } from 'react-router-dom'
 import Input from '../common/components/Input'
+import ThemeSwitch from '../common/components/ThemeSwitch'
 
 const useStyles = createStyles((theme) => ({
   link: {
@@ -88,6 +89,11 @@ const useStyles = createStyles((theme) => ({
 
   hiddenMobile: {
     [theme.fn.smallerThan('sm')]: {
+      display: 'none',
+    },
+  },
+  hiddenTablet: {
+    [theme.fn.smallerThan('md')]: {
       display: 'none',
     },
   },
@@ -160,8 +166,6 @@ export function AppHeader() {
     <Box pb={120}>
       <Header height={60} px="md">
         <Group position="apart" sx={{ height: '100%' }}>
-          {/* <MantineLogo size={30} /> */}
-
           <Group
             sx={{ height: '100%' }}
             spacing={0}
@@ -229,7 +233,7 @@ export function AppHeader() {
               Create Course
             </Link>
           </Group>
-          <Group className={classes.hiddenMobile}>
+          <Group className={classes.hiddenTablet}>
             <Input />
           </Group>
           <Group className={classes.hiddenMobile}>
@@ -242,6 +246,7 @@ export function AppHeader() {
             <Link to="register" style={{ color: 'white' }}>
               <Button>Sign up</Button>
             </Link>
+            <ThemeSwitch />
           </Group>
 
           <Burger
@@ -292,6 +297,9 @@ export function AppHeader() {
           />
 
           <Group position="center" grow pb="xl" px="md">
+            <Link to="profile" className={classes.link}>
+              Profile
+            </Link>
             <Button variant="default">Log in</Button>
             <Button>Sign up</Button>
           </Group>

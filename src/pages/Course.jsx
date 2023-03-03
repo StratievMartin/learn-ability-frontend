@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import CourseContentList from '../modules/course/CourseContentList'
+import CourseForm from '../modules/course/components/CourseForm'
 import {
   getCourse,
   deleteCourse,
@@ -53,6 +54,7 @@ export default function Course() {
       <h1>Course</h1>
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         <div>
+          <CourseForm />
           <Link to="/">Back to home</Link>
           <form onSubmit={onFormSubmit}>
             <div>
@@ -102,7 +104,7 @@ export default function Course() {
             </div>
           )}
         </div>
-        <CourseContentList />ƒ
+        <CourseContentList />
       </div>
     </div>
   )

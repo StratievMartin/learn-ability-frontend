@@ -1,7 +1,10 @@
-import LecturerCard from "./components/LecturerCard"
+import LecturerCard from './components/LecturerCard'
 
 export default function CourseContentList() {
-  return <div>CourseContentList
-    <LecturerCard/>
-  </div>
+  return (
+    <div>
+      CourseContentList
+      <LecturerCard />
+    </div>
+  )
 }
