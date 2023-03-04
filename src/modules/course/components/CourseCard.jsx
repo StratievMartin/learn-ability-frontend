@@ -1,68 +1,150 @@
-
+import { IconEye, IconHeart, IconMessageCircle } from '@tabler/icons-react'
 import {
-  createStyles,
-  Paper,
+  Card,
   Text,
-  Title,
-  Button,
+  Group,
+  Center,
+  createStyles,
+  ActionIcon,
 } from '@mantine/core'
 import { Link } from 'react-router-dom'
+// getStylesRef
 const useStyles = createStyles((theme) => ({
+  wishlist: {
+    transition: 'transform 150ms ease, box-shadow 150ms ease',
+    '&:hover': {
+      color: theme.colors.red[6],
+      transform: 'scale(1.01)',
+      boxShadow: theme.shadows.md,
+    },
+  },
   card: {
-    height: '500px',
-    width: '500px',
+    position: 'relative',
+    height: '300px',
+    backgroundColor:
+      theme.colorScheme === 'dark'
+        ? theme.colors.dark[6]
+        : theme.colors.gray[0],
+    margin: '20px',
+  },
+
+  image: {
+    ...theme.fn.cover(),
+    // ref: getStylesRef('image'),
+    backgroundSize: 'cover',
+    transition: 'transform 500ms ease',
+  },
+
+  overlay: {
+    position: 'absolute',
+    top: '20%',
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundImage:
+      'linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .85) 90%)',
+  },
+
+  content: {
+    height: '100%',
+    position: 'relative',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'space-between',
-    alignItems: 'flex-start',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
+    justifyContent: 'flex-end',
+    zIndex: 1,
   },
 
   title: {
-    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-    fontWeight: 900,
     color: theme.white,
-    lineHeight: 1.2,
-    marginTop: theme.spacing.xs,
+    marginBottom: '32px',
   },
 
-  category: {
-    color: theme.white,
-    opacity: 0.7,
-    fontWeight: 700,
-    textTransform: 'uppercase',
+  bodyText: {
+    color: theme.colors.dark[2],
+    marginLeft: '16px',
+  },
+
+  author: {
+    color: theme.colors.dark[2],
   },
 }))
 
+// interface ImageCardProps {
+//   image: string;
+//   title: string;
+//   author: string;
+//   views: number;
+//   comments: number;
+// }
+
 export default function CourseCard({ id, title, description }) {
-  const { classes } = useStyles()
-  const img =
-    'https://images.unsplash.com/photo-1507272931001-fc06c17e4f43?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80'
+  const { image, author, views, comments } = {
+    image:
+      'https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    author: 'Robert Gluesticker',
+    views: 7847,
+    comments: 5,
+  }
+  const { classes, theme } = useStyles()
+
   return (
-    <Paper
-      shadow="md"
-      p="xl"
-      radius="md"
-      sx={{ backgroundImage: `url(${img})` }}
-      className={classes.card}
-    >
-      <div>
-        <Text className={classes.category} size="xs">
-          {id}
-        </Text>
-        <Title order={3} className={classes.title}>
-          {title}
-        </Title>
-        <p>
-          {description}
-        </p>
-      </div>
-      <Link to={`courses/${id}`}>
-        <Button variant="white" color="dark">
-          More about the course
-        </Button>
-      </Link>
-    </Paper>
+    <Link to={`/courses/${id}`}>
+      <Card p="lg" shadow="lg" className={classes.card} radius="md">
+        <div
+          className={classes.image}
+          style={{ backgroundImage: `url(${image})` }}
+        />
+        <div className={classes.overlay} />
+
+        <div className={classes.content}>
+          <div>
+            <Text size="lg" className={classes.title} weight={500}>
+              {title}
+            </Text>
+
+            <Group position="apart" spacing="xs">
+              <Text size="sm" className={classes.author}>
+                {author}
+              </Text>
+
+              <Group spacing="lg">
+                <ActionIcon
+                  variant=""
+                  radius="md"
+                  size={36}
+                  className={classes.wishlist}
+                >
+                  <IconHeart
+                    size="20px"
+                    className={classes.like}
+                    stroke={1.5}
+                  />
+                </ActionIcon>
+                <Center>
+                  <IconEye
+                    size="20px"
+                    stroke={1.5}
+                    color={theme.colors.dark[2]}
+                  />
+                  <Text size="sm" className={classes.bodyText}>
+                    {views}
+                  </Text>
+                </Center>
+                <Center>
+                  <IconMessageCircle
+                    size="20px"
+                    stroke={1.5}
+                    color={theme.colors.dark[2]}
+                  />
+                  <Text size="sm" className={classes.bodyText}>
+                    {comments}
+                  </Text>
+                </Center>
+              </Group>
+            </Group>
+          </div>
+        </div>
+      </Card>
+    </Link>
   )
 }

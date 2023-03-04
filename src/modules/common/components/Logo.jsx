@@ -5,7 +5,7 @@ export default function Logo() {
   return (
     <Link to="/">
       <Group spacing={10} display="flex">
-        <img src="/public/vite.svg" width="20px" alt="" />
+        <img src="/vite.svg" width="20px" alt="" />
         <p>Learn Ability</p>
       </Group>
     </Link>
