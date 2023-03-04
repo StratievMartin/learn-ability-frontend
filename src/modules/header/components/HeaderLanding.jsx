@@ -6,6 +6,7 @@ import {
   Button,
   Text,
 } from '@mantine/core'
+import { Link } from 'react-router-dom'
 
 const useStyles = createStyles((theme) => ({
   hero: {
@@ -79,23 +80,22 @@ export default function HeaderLanding() {
         zIndex={0}
       />
       <Container className={classes.container}>
-        <Title className={classes.title}>
-          A fully featured React components library
-        </Title>
+        <Title className={classes.title}>Learn Ability</Title>
         <Text className={classes.description} size="xl" mt="xl">
-          Build fully functional accessible web applications faster than ever –
-          Mantine includes more than 120 customizable components and hooks to
-          cover you in any situation
+          A web app meant to be used by people who never stop learning.
         </Text>
 
-        <Button
-          variant="gradient"
-          size="xl"
-          radius="xl"
-          className={classes.control}
-        >
-          Get started
-        </Button>
+        <Link to="/login">
+          <Button
+            my={15}
+            variant="gradient"
+            size="lg"
+            radius="xl"
+            className={classes.control}
+          >
+            Get started
+          </Button>
+        </Link>
       </Container>
     </div>
   )

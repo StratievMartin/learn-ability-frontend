@@ -172,9 +172,7 @@ export function AppHeader() {
             spacing={0}
             className={classes.hiddenMobile}
           >
-            <Link to="/" className={classes.link}>
-              <Logo className={classes.link} />
-            </Link>
+            <Logo className={classes.link} />
             <HoverCard
               width={600}
               position="bottom"
