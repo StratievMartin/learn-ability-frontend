@@ -185,7 +185,7 @@ export function AppHeader() {
                 <a href="#" className={classes.link}>
                   <Center inline>
                     <Box component="span" mr={5}>
-                      Features
+                      Categories
                     </Box>
                     <IconChevronDown
                       size={16}
@@ -197,7 +197,7 @@ export function AppHeader() {
 
               <HoverCard.Dropdown sx={{ overflow: 'hidden' }}>
                 <Group position="apart" px="md">
-                  <Text weight={500}>Features</Text>
+                  <Text weight={500}>Categories</Text>
                   <Anchor href="#" size="xs">
                     View all
                   </Anchor>
@@ -278,7 +278,7 @@ export function AppHeader() {
           <UnstyledButton className={classes.link} onClick={toggleLinks}>
             <Center inline>
               <Box component="span" mr={5}>
-                Features
+                Categories
               </Box>
               <IconChevronDown size={16} color={theme.fn.primaryColor()} />
             </Center>

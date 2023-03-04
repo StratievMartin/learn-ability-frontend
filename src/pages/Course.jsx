@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import CourseContentList from '../modules/course/CourseContentList'
-import CourseForm from '../modules/course/components/CourseForm'
 import {
   getCourse,
   deleteCourse,
   addCourse,
   updateCourse,
 } from '../services/courseService'
+import { Button, TextInput } from '@mantine/core'
 
 export default function Course() {
   const [course, setCourse] = useState({
@@ -53,13 +53,11 @@ export default function Course() {
     <div>
       <h1>Course</h1>
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <div>
-          <CourseForm />
-          <Link to="/">Back to home</Link>
+        <div style={{}}>
           <form onSubmit={onFormSubmit}>
             <div>
               <label htmlFor="title">Title</label>
-              <input
+              <TextInput
                 onChange={onInputChange}
                 value={course.title}
                 type="text"
@@ -71,7 +69,7 @@ export default function Course() {
             </div>
             <div>
               <label htmlFor="description">Description</label>
-              <input
+              <TextInput
                 onChange={onInputChange}
                 value={course.description}
                 type="text"
@@ -84,15 +82,16 @@ export default function Course() {
             {error ? <span style={{ color: 'red' }}>{error}</span> : ''}
 
             <div>
-              <button
+              <Button
                 onClick={() =>
                   params.id ? updateCourseHandler() : addCourseHandler()
                 }
               >
                 Save
-              </button>
+              </Button>
             </div>
           </form>
+          {/*  */}
           {params.id && (
             <div>
               <p
