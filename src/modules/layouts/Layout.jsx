@@ -1,7 +1,7 @@
 import { AppHeader } from '../header/Header'
 import AppFooter from '../footer/Footer'
 import Routes from '../../routes/Routes'
-import { ColorSchemeProvider, MantineProvider } from '@mantine/core'
+import { Box, ColorSchemeProvider, MantineProvider } from '@mantine/core'
 import { useState } from 'react'
 import { useHotkeys } from '@mantine/hooks'
 
@@ -23,7 +23,9 @@ export default function Layout() {
           withNormalizeCSS
         >
           <AppHeader />
-          <Routes />
+          <Box maw="1200px" my="0" mx="auto">
+            <Routes />
+          </Box>
           <AppFooter />
         </MantineProvider>
       </ColorSchemeProvider>

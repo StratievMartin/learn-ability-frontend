@@ -30,6 +30,7 @@ import {
 import { Link } from 'react-router-dom'
 import Input from '../common/components/Input'
 import ThemeSwitch from '../common/components/ThemeSwitch'
+import Logo from '../../modules/common/components/Logo.jsx'
 
 const useStyles = createStyles((theme) => ({
   link: {
@@ -172,7 +173,7 @@ export function AppHeader() {
             className={classes.hiddenMobile}
           >
             <Link to="/" className={classes.link}>
-              Home
+              <Logo className={classes.link} />
             </Link>
             <HoverCard
               width={600}
@@ -273,7 +274,7 @@ export function AppHeader() {
           />
 
           <Link to="/" className={classes.link}>
-            Home
+            <Logo className={classes.link} />
           </Link>
           <UnstyledButton className={classes.link} onClick={toggleLinks}>
             <Center inline>
