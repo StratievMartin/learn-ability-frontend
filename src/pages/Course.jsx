@@ -17,7 +17,6 @@ export default function Course() {
   })
   const params = useParams()
   const [error, setError] = useState(false)
-
   useEffect(() => {
     if (params.id) {
       getCourse(params.id).then((res) => setCourse(res.data))
@@ -94,6 +93,12 @@ export default function Course() {
           {/*  */}
           {params.id && (
             <div>
+              <iframe
+                width="420"
+                height="345"
+                src="https://www.youtube.com/embed/tgbNymZ7vqY"
+              ></iframe>
+
               <p
                 onClick={() => deleteCourseHandler(course.id)}
                 style={{ color: 'red', cursor: 'pointer' }}
