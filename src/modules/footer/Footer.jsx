@@ -18,6 +18,7 @@ const useStyles = createStyles((theme) => ({
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
+    maxWidth: '1200px',
     paddingTop: theme.spacing.xl,
     paddingBottom: theme.spacing.xl,
 
