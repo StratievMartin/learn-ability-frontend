@@ -14,12 +14,23 @@ export default function Course() {
     id: '',
     title: '',
     description: '',
+    price: '',
+    // lecture,
+    // # lecturer
+    // # students
+    // # keywords
+    // # comments
   })
   const params = useParams()
   const [error, setError] = useState(false)
   useEffect(() => {
+    console.log('restart')
+    console.log('nice')
     if (params.id) {
-      getCourse(params.id).then((res) => setCourse(res.data))
+      getCourse(params.id).then((res) => {
+        console.log(res)
+        setCourse(res.data)
+      })
     }
   }, [params.id])
 
@@ -75,6 +86,18 @@ export default function Course() {
                 name="description"
                 id="description"
                 placeholder="Description..."
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="price">Price</label>
+              <TextInput
+                onChange={onInputChange}
+                value={course.price}
+                type="text"
+                name="price"
+                id="price"
+                placeholder="Price..."
                 required
               />
             </div>
