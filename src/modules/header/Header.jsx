@@ -164,9 +164,9 @@ export function AppHeader() {
   ))
 
   return (
-    <Box pb={120}>
+    <Box pb={120} >
       <Header height={60} px="md">
-        <Group position="apart" sx={{ height: '100%' }}>
+        <Group position="apart" sx={{ height: '100%' }} maw="1200px" m="0 auto">
           <Group
             sx={{ height: '100%' }}
             spacing={0}
