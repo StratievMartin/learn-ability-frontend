@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import CourseContentList from '../modules/course/CourseContentList'
+import LectureDetails from '../modules/course/components/LectureDetails'
 import {
   getCourse,
   deleteCourse,
@@ -15,7 +16,7 @@ export default function Course() {
     title: '',
     description: '',
     price: '',
-    // lecture,
+    lectures: [],
     // # lecturer
     // # students
     // # keywords
@@ -24,8 +25,6 @@ export default function Course() {
   const params = useParams()
   const [error, setError] = useState(false)
   useEffect(() => {
-    console.log('restart')
-    console.log('nice')
     if (params.id) {
       getCourse(params.id).then((res) => {
         console.log(res)
@@ -116,12 +115,7 @@ export default function Course() {
           {/*  */}
           {params.id && (
             <div>
-              <iframe
-                width="420"
-                height="345"
-                src="https://www.youtube.com/embed/tgbNymZ7vqY"
-              ></iframe>
-
+              <LectureDetails lectures={course.lectures} />
               <p
                 onClick={() => deleteCourseHandler(course.id)}
                 style={{ color: 'red', cursor: 'pointer' }}
