@@ -164,12 +164,12 @@ export function AppHeader() {
   ))
 
   return (
-    <Box pb={120} >
+    <Box pb={120}>
       <Header height={60} px="md">
         <Group position="apart" sx={{ height: '100%' }} maw="1200px" m="0 auto">
           <Group
             sx={{ height: '100%' }}
-            spacing={0}
+            spacing={5}
             className={classes.hiddenMobile}
           >
             <Logo className={classes.link} />
@@ -183,7 +183,7 @@ export function AppHeader() {
               <HoverCard.Target>
                 <a href="#" className={classes.link}>
                   <Center inline>
-                    <Box component="span" mr={5}>
+                    <Box component="span" mx={5}>
                       Categories
                     </Box>
                     <IconChevronDown
@@ -228,8 +228,8 @@ export function AppHeader() {
               </HoverCard.Dropdown>
             </HoverCard>
 
-            <Link to="courses" className={classes.link}>
-              Create Course
+            <Link to="articles" className={classes.link}>
+              Articles
             </Link>
             <Link to="profile" className={classes.link}>
               Profile
@@ -283,20 +283,19 @@ export function AppHeader() {
             </Center>
           </UnstyledButton>
           <Collapse in={linksOpened}>{links}</Collapse>
-          <a href="#" className={classes.link}>
-            Learn
-          </a>
-          <a href="#" className={classes.link}>
-            Academy
-          </a>
-
+          <Link to="articles" className={classes.link}>
+            Articles
+          </Link>
+          <Link to="profile" className={classes.link}>
+            Profile
+          </Link>
           <Divider
             my="sm"
             color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'}
           />
 
           <Group position="center" grow pb="xl" px="md">
-            <Link to="profile" className={classes.link}>
+            <Link to="profile" className={(classes.link, classes.hiddenMobile)}>
               Profile
             </Link>
             <Button variant="default">Log in</Button>

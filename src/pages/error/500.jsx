@@ -51,7 +51,7 @@ const useStyles = createStyles((theme) => ({
   },
 }))
 
-export function ServerError() {
+export default function ServerError() {
   const { classes } = useStyles()
 
   return (

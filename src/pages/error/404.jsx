@@ -46,7 +46,7 @@ const useStyles = createStyles((theme) => ({
 }))
 import NotFoundImg from './NotFoundImg'
 
-export function NotFound() {
+export default function NotFound() {
   const { classes } = useStyles()
 
   return (

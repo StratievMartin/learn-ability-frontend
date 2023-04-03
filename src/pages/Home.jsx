@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { getAllCourses } from '../services/courseService'
 import { CardsCarousel } from '../modules/common/components/Carousel'
-import { ArticlesCardsGrid } from '../modules/common/components/CardsGrid'
 import HeaderLanding from '../modules/header/components/HeaderLanding'
 
 export default function Home() {
@@ -17,7 +16,6 @@ export default function Home() {
     <div>
       <HeaderLanding />
       <CardsCarousel data={courses} />
-      <ArticlesCardsGrid />
     </div>
   )
 }
