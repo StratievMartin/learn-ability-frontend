@@ -15,7 +15,7 @@ export default function Home() {
 
   return (
     <div>
-      <HeaderLanding/>
+      <HeaderLanding />
       <CardsCarousel data={courses} />
       <ArticlesCardsGrid />
     </div>

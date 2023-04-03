@@ -3,7 +3,7 @@ import axios from '../utils/axios/axios'
 const apiUrl = `${import.meta.env.VITE_API_URL}/courses`
 
 export function getAllCourses() {
-  return axios.get(`${apiUrl}/`)
+  return axios.get(`${apiUrl}`)
 }
 export function getCourse(id) {
   return axios.get(`${apiUrl}/${id}`)
