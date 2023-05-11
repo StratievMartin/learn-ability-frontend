@@ -9,7 +9,7 @@ import {
 } from '@mantine/core'
 import { IconSwimming } from '@tabler/icons-react'
 
-const ICON_SIZE = '50px'//rem(60)
+const ICON_SIZE = '50px' //rem(60)
 
 const useStyles = createStyles((theme) => ({
   card: {

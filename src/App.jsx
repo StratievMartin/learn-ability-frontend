@@ -2,7 +2,6 @@ import './App.css'
 import Layout from './modules/layouts/Layout'
 
 function App() {
-
   return (
     <div className="App">
       <Layout />

@@ -1,10 +1,4 @@
-import {
-  createStyles,
-  Text,
-  Card,
-  RingProgress,
-  Group,
-} from '@mantine/core'
+import { createStyles, Text, Card, RingProgress, Group } from '@mantine/core'
 
 const useStyles = createStyles((theme) => ({
   card: {
