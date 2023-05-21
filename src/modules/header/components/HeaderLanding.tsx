@@ -69,7 +69,7 @@ const useStyles = createStyles((theme) => ({
   },
 }))
 
-export default function HeaderLanding() {
+const HeaderLanding = () => {
   const { classes } = useStyles()
 
   return (
@@ -80,7 +80,7 @@ export default function HeaderLanding() {
         zIndex={0}
       />
       <Container className={classes.container}>
-        <Title className={classes.title}>Learn Ability</Title>
+        <Title className={classes.title}>LearnAbility</Title>
         <Text className={classes.description} size="xl" mt="xl">
           A web app meant to be used by people who never stop learning.
         </Text>
@@ -100,3 +100,4 @@ export default function HeaderLanding() {
     </div>
   )
 }
+export default HeaderLanding

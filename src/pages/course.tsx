@@ -10,7 +10,7 @@ import {
 } from '../services/courseService'
 import { Button, TextInput } from '@mantine/core'
 
-export default function Course() {
+const Course = () => {
   const [course, setCourse] = useState({
     id: '',
     title: '',
@@ -130,3 +130,4 @@ export default function Course() {
     </div>
   )
 }
+export default Course

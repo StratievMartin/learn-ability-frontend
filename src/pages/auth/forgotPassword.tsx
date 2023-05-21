@@ -32,9 +32,8 @@ const useStyles = createStyles((theme) => ({
   },
 }))
 
-export default function ForgotPassword() {
-  const { classes } = useStyles()
-
+// const { classes } = useStyles()
+const ForgotPassword = () => {
   return (
     <Container size={460} my={30}>
       <Title className={classes.title} align="center">
@@ -64,3 +63,4 @@ export default function ForgotPassword() {
     </Container>
   )
 }
+export default ForgotPassword

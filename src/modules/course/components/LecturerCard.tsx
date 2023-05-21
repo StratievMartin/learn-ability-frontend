@@ -1,6 +1,6 @@
-import { Avatar, Text, Button, Paper, Indicator } from '@mantine/core'
+import { Avatar, Text, Button, Paper } from '@mantine/core'
 
-export default function LecturerCard({ lecturerData }) {
+const LecturerCard = ({ lecturerData }) => {
   const { avatar, name, email, job } = lecturerData
 
   return (
@@ -27,3 +27,4 @@ export default function LecturerCard({ lecturerData }) {
     </Paper>
   )
 }
+export default LecturerCard

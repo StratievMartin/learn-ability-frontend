@@ -1,6 +1,6 @@
 import LecturerCard from './components/LecturerCard'
 
-export default function CourseContentList() {
+const CourseContentList = () => {
   const lecturerData = {
     name: 'Lora',
     email: 'lora@gmail.com',
@@ -14,3 +14,4 @@ export default function CourseContentList() {
     </div>
   )
 }
+export default CourseContentList

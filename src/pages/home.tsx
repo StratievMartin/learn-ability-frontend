@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { getAllCourses } from '../services/courseService'
 import { getAllKeywords } from '../services/keywordsService'
-import { CardsCarousel } from '../modules/common/components/Carousel'
+import CardsCarousel from '../modules/common/components/Carousel'
 import HeaderLanding from '../modules/header/components/HeaderLanding'
 
-export default function Home() {
+const Home = () => {
   const [courses, setCourses] = useState([])
   const [keywords, setKeywords] = useState([])
 
@@ -28,3 +28,4 @@ export default function Home() {
     </div>
   )
 }
+export default Home

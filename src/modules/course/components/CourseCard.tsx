@@ -69,15 +69,13 @@ const useStyles = createStyles((theme) => ({
   },
 }))
 
-// interface ImageCardProps {
-//   image: string;
-//   title: string;
-//   author: string;
-//   views: number;
-//   comments: number;
-// }
+interface ImageCardProps {
+  id: string;
+  title: string;
+  description: string;
+}
 
-export default function CourseCard({ id, title, description }) {
+const CourseCard = ({ id, title, description }: ImageCardProps) => {
   const { image, author, views, comments } = {
     image:
       'https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
@@ -148,3 +146,4 @@ export default function CourseCard({ id, title, description }) {
     </Link>
   )
 }
+export default CourseCard

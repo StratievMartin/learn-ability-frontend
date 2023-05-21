@@ -51,7 +51,7 @@ const useStyles = createStyles((theme) => ({
   },
 }))
 
-export function ArticlesCardsGrid() {
+const ArticlesCardsGrid = () => {
   const { classes } = useStyles()
 
   const cards = mockdata.map((article) => (
@@ -83,3 +83,4 @@ export function ArticlesCardsGrid() {
     </Container>
   )
 }
+export default ArticlesCardsGrid

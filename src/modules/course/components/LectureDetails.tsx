@@ -1,4 +1,4 @@
-export default function LectureDetails({ lectures }) {
+const LectureDetails = ({ lectures }) => {
   const lect = lectures.map((l) => {
     return (
       <div key={l.id}>
@@ -16,3 +16,4 @@ export default function LectureDetails({ lectures }) {
     </div>
   )
 }
+export default LectureDetails

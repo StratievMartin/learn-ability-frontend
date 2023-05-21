@@ -31,7 +31,7 @@ const useStyles = createStyles((theme) => ({
   },
 }))
 
-export function CourseProgressTracker() {
+const CourseProgressTracker = () => {
   const { classes } = useStyles()
 
   return (
@@ -70,3 +70,4 @@ export function CourseProgressTracker() {
     </Paper>
   )
 }
+export default CourseProgressTracker

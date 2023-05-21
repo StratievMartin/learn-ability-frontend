@@ -11,7 +11,7 @@ import {
 } from '@mantine/core'
 import { Link } from 'react-router-dom'
 
-export default function Login() {
+const Login = () => {
   return (
     <Container size={420} my={40}>
       <Title align="center">Welcome back!</Title>
@@ -41,3 +41,4 @@ export default function Login() {
     </Container>
   )
 }
+export default Login

@@ -8,6 +8,7 @@ import {
   SimpleGrid,
 } from '@mantine/core'
 import { Link } from 'react-router-dom'
+import NotFoundImg from './NotFoundImg'
 
 const useStyles = createStyles((theme) => ({
   root: {
@@ -44,9 +45,8 @@ const useStyles = createStyles((theme) => ({
     },
   },
 }))
-import NotFoundImg from './NotFoundImg'
 
-export default function NotFound() {
+const NotFound = () => {
   const { classes } = useStyles()
 
   return (
@@ -80,3 +80,4 @@ export default function NotFound() {
     </Container>
   )
 }
+export default NotFound

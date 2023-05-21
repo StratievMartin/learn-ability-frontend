@@ -4,7 +4,7 @@ import {
   IconBrandYoutube,
   IconBrandInstagram,
 } from '@tabler/icons-react'
-import Logo from '../../modules/common/components/Logo.jsx'
+import Logo from '../common/components/Logo.js'
 
 const useStyles = createStyles((theme) => ({
   footer: {
@@ -34,7 +34,7 @@ const useStyles = createStyles((theme) => ({
   },
 }))
 
-export default function AppFooter() {
+const AppFooter = () => {
   const { classes } = useStyles()
 
   return (
@@ -56,3 +56,4 @@ export default function AppFooter() {
     </div>
   )
 }
+export default AppFooter

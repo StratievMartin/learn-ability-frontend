@@ -9,10 +9,10 @@ import {
 } from '@mantine/core'
 import { Link } from 'react-router-dom'
 
-export default function Register() {
+const Register = () => {
   return (
     <Container size={420} my={40}>
-      <Title align="center">Welcome to Learn Ability!</Title>
+      <Title align="center">Welcome to LearnAbility!</Title>
       <Text color="dimmed" size="sm" align="center" mt={5}>
         Already have an account?{' '}
         <Link to="/login" size="sm" component="button">
@@ -35,3 +35,4 @@ export default function Register() {
     </Container>
   )
 }
+export default Register

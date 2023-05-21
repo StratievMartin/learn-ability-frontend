@@ -2,7 +2,8 @@ import { Carousel } from '@mantine/carousel'
 import { useMantineTheme } from '@mantine/core'
 import { useMediaQuery } from '@mantine/hooks'
 import CourseCard from '../../course/components/CourseCard'
-export function CardsCarousel({ data }) {
+
+const CardsCarousel = ({ data }) => {
   const theme = useMantineTheme()
   const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`)
   const slides = data.map((item) => (
@@ -23,3 +24,4 @@ export function CardsCarousel({ data }) {
     </Carousel>
   )
 }
+export default CardsCarousel

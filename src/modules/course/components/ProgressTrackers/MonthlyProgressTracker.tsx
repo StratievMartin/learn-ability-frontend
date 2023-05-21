@@ -49,7 +49,7 @@ const useStyles = createStyles((theme) => ({
 //   }[];
 // }
 
-export function MonthlyProgressTracker() {
+const MonthlyProgressTracker = () => {
   const { title, completed, total, stats } = {
     title: 'Project tasks',
     completed: 1887,
@@ -117,3 +117,4 @@ export function MonthlyProgressTracker() {
     </Card>
   )
 }
+export default MonthlyProgressTracker

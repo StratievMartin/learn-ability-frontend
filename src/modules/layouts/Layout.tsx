@@ -1,11 +1,11 @@
-import { AppHeader } from '../header/Header'
 import AppFooter from '../footer/Footer'
-import Routes from '../../routes/Routes'
+import AppRoutes from '../../routes/Routes'
+import AppHeader from '../header/Header'
 import { Box, ColorSchemeProvider, MantineProvider } from '@mantine/core'
 import { useState } from 'react'
 import { useHotkeys } from '@mantine/hooks'
 
-export default function Layout() {
+const Layout = () => {
   const [colorScheme, setColorScheme] = useState('dark')
   const toggleColorScheme = (value) =>
     setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'))
@@ -24,7 +24,7 @@ export default function Layout() {
         >
           <AppHeader />
           <Box maw="1200px" my="0" mx="auto">
-            <Routes />
+            <AppRoutes />
           </Box>
           <AppFooter />
         </MantineProvider>
@@ -32,3 +32,4 @@ export default function Layout() {
     </div>
   )
 }
+export default Layout

@@ -1,4 +1,4 @@
-export default function NotFoundImg() {
+const NotFoundImg = () => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 903.227 561.08">
       <path
@@ -372,3 +372,4 @@ export default function NotFoundImg() {
     </svg>
   )
 }
+export default NotFoundImg

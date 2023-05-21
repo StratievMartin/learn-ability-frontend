@@ -28,9 +28,9 @@ import {
   IconChevronDown,
 } from '@tabler/icons'
 import { Link } from 'react-router-dom'
-import Input from '../common/components/Input'
-import ThemeSwitch from '../common/components/ThemeSwitch'
-import Logo from '../../modules/common/components/Logo.jsx'
+import UiInput from '../common/components/Input.js'
+import ThemeSwitch from '../common/components/ThemeSwitch.js'
+import Logo from '../common/components/Logo.js'
 
 const useStyles = createStyles((theme) => ({
   link: {
@@ -139,7 +139,7 @@ const mockdata = [
   },
 ]
 
-export function AppHeader() {
+const AppHeader = () => {
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
     useDisclosure(false)
   const [linksOpened, { toggle: toggleLinks }] = useDisclosure(false)
@@ -236,7 +236,7 @@ export function AppHeader() {
             </Link>
           </Group>
           <Group className={classes.hiddenTablet}>
-            <Input />
+            <UiInput />
           </Group>
           <Group className={classes.hiddenMobile}>
             <Link to="login" style={{ color: 'black' }}>
@@ -306,3 +306,4 @@ export function AppHeader() {
     </Box>
   )
 }
+export default AppHeader

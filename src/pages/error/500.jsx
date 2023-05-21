@@ -51,7 +51,7 @@ const useStyles = createStyles((theme) => ({
   },
 }))
 
-export default function ServerError() {
+const ServerError = () => {
   const { classes } = useStyles()
 
   return (
@@ -78,3 +78,4 @@ export default function ServerError() {
     </div>
   )
 }
+export default ServerError
