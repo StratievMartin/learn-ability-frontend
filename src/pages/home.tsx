@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { getAllCourses } from '../services/courseService'
 import { getAllKeywords } from '../services/keywordsService'
 import CardsCarousel from '../modules/common/components/Carousel'
@@ -13,6 +13,8 @@ const Home = () => {
       setCourses(res.data)
     })
     getAllKeywords().then((res) => {
+      console.log(res)
+
       setKeywords(res.data)
     })
   }, [])
@@ -21,9 +23,10 @@ const Home = () => {
     <div>
       <HeaderLanding />
       Keywords:
-      {keywords.map((k) => {
-        return <span key={k.id}> {k.keyword} </span>
-      })}
+      {keywords &&
+        keywords.map((k) => {
+          return <span key={k.id}> {k.title} </span>
+        })}
       <CardsCarousel data={courses} />
     </div>
   )

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import CourseContentList from '../modules/course/CourseContentList'
 import LectureDetails from '../modules/course/components/LectureDetails'
 import {
@@ -8,20 +8,21 @@ import {
   addCourse,
   updateCourse,
 } from '../services/courseService'
-import { Button, TextInput } from '@mantine/core'
+import { Button, Select, TextInput } from '@mantine/core'
+import { getAllKeywords } from '../services/keywordsService'
 
 const Course = () => {
   const [course, setCourse] = useState({
-    id: '',
     title: '',
     description: '',
-    price: '',
+    price: 1,
     lectures: [],
-    // # lecturer
-    // # students
-    // # keywords
-    // # comments
+    keyword: '',
+    // author
+    // students
+    // comments
   })
+  const [keywords, setKeywords] = useState([])
   const params = useParams()
   const [error, setError] = useState(false)
   useEffect(() => {
@@ -29,6 +30,14 @@ const Course = () => {
       getCourse(params.id).then((res) => {
         console.log(res)
         setCourse(res.data)
+      })
+    } else {
+      getAllKeywords().then((res) => {
+        const mapped = res.data.map((kwd) => ({
+          value: kwd.id,
+          label: kwd.title,
+        }))
+        setKeywords(mapped)
       })
     }
   }, [params.id])
@@ -42,14 +51,24 @@ const Course = () => {
     e.preventDefault()
   }
   const onInputChange = (e) => {
+    const { name, value } = e.target
+
     setCourse((prev) => {
-      return { ...prev, [e.target.name]: e.target.value }
+      return { ...prev, [name]: value }
     })
+    console.log(course)
+
     setError(false)
+  }
+  const handleSelect = (e) => {
+    setCourse((prev) => ({
+      ...prev,
+      keyword: e,
+    }))
   }
   const addCourseHandler = async () => {
     await addCourse(course)
-      .then((res) => console.log(res))
+      .then((res) => console.log('reee', res))
       .catch((err) => setError(err.message))
   }
   const updateCourseHandler = async () => {
@@ -100,6 +119,15 @@ const Course = () => {
                 required
               />
             </div>
+            <div>
+              <label htmlFor="keyword">Keyword</label>
+              <Select
+                placeholder="Pick one"
+                name="keyword"
+                onChange={handleSelect}
+                data={keywords}
+              />
+            </div>
             {error ? <span style={{ color: 'red' }}>{error}</span> : ''}
 
             <div>
@@ -115,7 +143,9 @@ const Course = () => {
           {/*  */}
           {params.id && (
             <div>
-              <LectureDetails lectures={course.lectures} />
+              {course?.lectures && (
+                <LectureDetails lectures={course?.lectures} />
+              )}
               <p
                 onClick={() => deleteCourseHandler(course.id)}
                 style={{ color: 'red', cursor: 'pointer' }}
