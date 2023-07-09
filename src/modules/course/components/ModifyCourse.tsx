@@ -14,6 +14,7 @@ import TextEditor from '../../common/components/TextEditor'
 
 const ModifyCourse = () => {
   const [course, setCourse] = useState({
+    id: '',
     title: '',
     description: '',
     price: '',
@@ -26,7 +27,7 @@ const ModifyCourse = () => {
 
   useEffect(() => {
     getAllKeywords().then((res) => {
-      const mapped = res.data.map((kwd) => ({
+      const mapped = res.data.map((kwd: any) => ({
         value: kwd.id,
         label: kwd.title,
       }))
@@ -42,13 +43,13 @@ const ModifyCourse = () => {
     }
   }, [params.id])
 
-  const deleteCourseHandler = async (id) => {
+  const deleteCourseHandler = async (id: any) => {
     await deleteCourse(id).then((res) => {
       console.log(res)
     })
   }
 
-  const onFormSubmit = (e) => {
+  const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (params.id) {
       updateCourseHandler(params.id)
@@ -57,13 +58,13 @@ const ModifyCourse = () => {
     }
   }
 
-  const onInputChange = (e) => {
+  const onInputChange = (e: any) => {
     const { name, value } = e.target
     setCourse((prev) => ({ ...prev, [name]: value }))
     setError(false)
   }
 
-  const handleSelect = (e) => {
+  const handleSelect = (e: any) => {
     setCourse((prev) => ({
       ...prev,
       keyword: e,
@@ -73,20 +74,20 @@ const ModifyCourse = () => {
   const addCourseHandler = async () => {
     try {
       await addCourse(course)
-    } catch (err) {
+    } catch (err: any) {
       setError(err.message)
     }
   }
 
-  const updateCourseHandler = async (id) => {
+  const updateCourseHandler = async (id: any) => {
     try {
       await updateCourse(id, course)
-    } catch (err) {
+    } catch (err: any) {
       setError(err.message)
     }
   }
 
-  const handleDescriptionChange = (value) => {
+  const handleDescriptionChange = (value: any) => {
     setCourse((prevCourse) => ({
       ...prevCourse,
       description: value,

@@ -7,7 +7,7 @@ import TextAlign from '@tiptap/extension-text-align'
 import Superscript from '@tiptap/extension-superscript'
 import SubScript from '@tiptap/extension-subscript'
 
-const TextEditor = ({ value, onChange }) => {
+const TextEditor = ({ value, onChange }: any) => {
   const editor = useEditor({
     extensions: [
       StarterKit,
