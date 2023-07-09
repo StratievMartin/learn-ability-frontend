@@ -13,8 +13,6 @@ const Home = () => {
       setCourses(res.data)
     })
     getAllKeywords().then((res) => {
-      console.log(res)
-
       setKeywords(res.data)
     })
   }, [])
@@ -25,7 +23,7 @@ const Home = () => {
       Keywords:
       {keywords &&
         keywords.map((k) => {
-          return <span key={k.id}> {k.title} </span>
+          return <span key={k.id}>{k.title} </span>
         })}
       <CardsCarousel data={courses} />
     </div>

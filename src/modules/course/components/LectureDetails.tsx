@@ -1,5 +1,5 @@
-const LectureDetails = ({ lectures }) => {
-  const lect = lectures.map((l) => {
+const LectureDetails = ({ lectures }: any) => {
+  const lect = lectures.map((l: any) => {
     return (
       <div key={l.id}>
         <p>{l.title}</p>

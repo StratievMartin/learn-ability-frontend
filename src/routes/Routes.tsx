@@ -8,6 +8,7 @@ import Register from '../pages/auth/register'
 import ForgotPassword from '../pages/auth/forgotPassword'
 import NotFound from '../pages/error/404'
 import ServerError from '../pages/error/500'
+import ModifyCourse from '../modules/course/components/ModifyCourse'
 
 const AppRoutes = () => {
   return (
@@ -15,7 +16,7 @@ const AppRoutes = () => {
       <Route exact path="/" element={<Home />} />
       <Route path="profile" element={<Profile />} />
       <Route path="courses/:id" element={<Course />} />
-      <Route path="courses" element={<Course />} />
+      <Route path="courses/modify/:id?" element={<ModifyCourse />} />
       <Route path="articles" element={<Articles />} />
       <Route path="login" element={<Login />} />
       <Route path="register" element={<Register />} />

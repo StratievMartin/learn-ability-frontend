@@ -13,15 +13,16 @@ const CardsCarousel = ({ data }) => {
   ))
 
   return (
-    <Carousel
-      slideSize="50%"
-      breakpoints={[{ maxWidth: 'sm', slideSize: '100%', slideGap: '2px' }]}
-      slideGap="xl"
-      align="start"
-      slidesToScroll={mobile ? 1 : 2}
-    >
-      {slides}
-    </Carousel>
+    <div>Carousel --</div>
+    // <Carousel
+    //   slideSize="50%"
+    //   breakpoints={[{ maxWidth: 'sm', slideSize: '100%', slideGap: '2px' }]}
+    //   slideGap="xl"
+    //   align="start"
+    //   slidesToScroll={mobile ? 1 : 2}
+    // >
+    //   {slides}
+    // </Carousel>
   )
 }
 export default CardsCarousel

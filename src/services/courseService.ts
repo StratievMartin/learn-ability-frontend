@@ -9,8 +9,6 @@ export const getCourse = async (id: string): Promise<AxiosResponse> => {
   return axios.get(`${apiUrl}/${id}`)
 }
 export const addCourse = async (data: object): Promise<AxiosResponse> => {
-  console.log('fe', data)
-
   return axios.post(`${apiUrl}`, data)
 }
 export const updateCourse = async (

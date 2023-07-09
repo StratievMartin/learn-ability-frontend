@@ -9,9 +9,31 @@ import {
   Group,
   Button,
 } from '@mantine/core'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { signIn } from '../../services/authService'
+import { useState } from 'react'
 
 const Login = () => {
+  const [user, setUser] = useState({})
+  const navigate = useNavigate()
+  const [error, setError] = useState(false)
+
+  const onInputChange = (e) => {
+    setUser((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }))
+  }
+
+  const signInHandler = async () => {
+    try {
+      await signIn(user)
+      navigate('/')
+    } catch (error) {
+      setError(error.message)
+    }
+  }
+
   return (
     <Container size={420} my={40}>
       <Title align="center">Welcome back!</Title>
@@ -23,8 +45,16 @@ const Login = () => {
       </Text>
 
       <Paper withBorder shadow="md" p={30} mt={30} radius="md">
-        <TextInput label="Email" placeholder="you@mantine.dev" required />
+        <TextInput
+          name="email"
+          onChange={onInputChange}
+          label="Email"
+          placeholder="you@mantine.dev"
+          required
+        />
         <PasswordInput
+          name="password"
+          onChange={onInputChange}
           label="Password"
           placeholder="Your password"
           required
@@ -34,7 +64,10 @@ const Login = () => {
           <Checkbox label="Remember me" />
           <Link to="/forgot-password">Forgot password?</Link>
         </Group>
-        <Button fullWidth mt="xl">
+
+        {error ? <Text color="red.7">{error}</Text> : ''}
+
+        <Button onClick={signInHandler} fullWidth mt="xl">
           Sign in
         </Button>
       </Paper>

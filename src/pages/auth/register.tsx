@@ -22,13 +22,11 @@ const Register = () => {
       ...prev,
       [e.target.name]: e.target.value,
     }))
-    console.log(user)
   }
 
   const signUpHandler = async () => {
     try {
-      const result = await signUp(user)
-      console.log('result: ', result)
+      await signUp(user)
       navigate('/')
     } catch (error) {
       setError(error.message)

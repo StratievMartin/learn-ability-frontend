@@ -234,6 +234,7 @@ const AppHeader = () => {
             <Link to="profile" className={classes.link}>
               Profile
             </Link>
+            <Link to="/courses/modify" className={classes.link}>Create a course</Link>
           </Group>
           <Group className={classes.hiddenTablet}>
             <UiInput />
@@ -289,6 +290,8 @@ const AppHeader = () => {
           <Link to="profile" className={classes.link}>
             Profile
           </Link>
+          <Link to="/courses/modify">Create a course</Link>
+
           <Divider
             my="sm"
             color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'}
