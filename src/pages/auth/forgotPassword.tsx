@@ -32,8 +32,8 @@ const useStyles = createStyles((theme) => ({
   },
 }))
 
-// const { classes } = useStyles()
 const ForgotPassword = () => {
+  const { classes } = useStyles()
   return (
     <Container size={460} my={30}>
       <Title className={classes.title} align="center">

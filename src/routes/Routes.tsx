@@ -13,7 +13,7 @@ import ModifyCourse from '../modules/course/components/ModifyCourse'
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route exact path="/" element={<Home />} />
+      <Route path="/" element={<Home />} />
       <Route path="profile" element={<Profile />} />
       <Route path="courses/:id" element={<Course />} />
       <Route path="courses/modify/:id?" element={<ModifyCourse />} />
@@ -27,4 +27,5 @@ const AppRoutes = () => {
     </Routes>
   )
 }
+
 export default AppRoutes

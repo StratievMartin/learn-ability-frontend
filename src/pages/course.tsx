@@ -31,9 +31,9 @@ const Course = () => {
       <h2>{course.title}</h2>
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         <div>
-          <p>{course.description}</p>
           {course.keyword}
           {course.price}
+          <div dangerouslySetInnerHTML={{ __html: course.description }} />
 
           <div>
             {course?.lectures && <LectureDetails lectures={course?.lectures} />}
