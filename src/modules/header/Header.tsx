@@ -8,12 +8,16 @@ import {
   Burger,
   Drawer,
   ScrollArea,
+  Flex,
 } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import { Link } from 'react-router-dom'
 import UiInput from '../common/components/Input.js'
 import ThemeSwitch from '../common/components/ThemeSwitch.js'
 import Logo from '../common/components/Logo.js'
+//
+import { useSelector, useDispatch } from 'react-redux'
+import { clearUser } from '../../store/auth/actions'
 
 const useStyles = createStyles((theme) => ({
   link: {
@@ -93,6 +97,14 @@ const AppHeader = () => {
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
     useDisclosure(false)
   const { classes, theme } = useStyles()
+  const dispatch = useDispatch()
+
+  const user = useSelector((state: object) => state.user)
+
+  const handleLogout = () => {
+    localStorage.removeItem('user')
+    dispatch(clearUser())
+  }
 
   return (
     <Box pb={120}>
@@ -118,15 +130,22 @@ const AppHeader = () => {
           <Group className={classes.hiddenTablet}>
             <UiInput />
           </Group>
-          <Group className={classes.hiddenMobile}>
-            <Link to="login" style={{ color: 'black' }}>
-              <Button variant="default">Log in</Button>
-            </Link>
-            <Link to="register" style={{ color: 'white' }}>
-              <Button>Sign up</Button>
-            </Link>
-            <ThemeSwitch />
-          </Group>
+          {!user.user ? (
+            <Group className={classes.hiddenMobile}>
+              <Link to="login" style={{ color: 'black' }}>
+                <Button variant="default">Log in</Button>
+              </Link>
+              <Link to="register" style={{ color: 'white' }}>
+                <Button>Sign up</Button>
+              </Link>
+              <ThemeSwitch />
+            </Group>
+          ) : (
+            <Flex align={'center'}>
+              <p>{user?.user?.email}</p>
+              <Button onClick={handleLogout}>Logout</Button>
+            </Flex>
+          )}
 
           <Burger
             opened={drawerOpened}
@@ -135,7 +154,6 @@ const AppHeader = () => {
           />
         </Group>
       </Header>
-
       <Drawer
         opened={drawerOpened}
         onClose={closeDrawer}
@@ -171,8 +189,17 @@ const AppHeader = () => {
             <Link to="profile" className={(classes.link, classes.hiddenMobile)}>
               Profile
             </Link>
-            <Button variant="default">Log in</Button>
-            <Button>Sign up</Button>
+            {!user.user ? (
+              <>
+                <Button variant="default">Log in</Button>
+                <Button>Sign up</Button>
+              </>
+            ) : (
+              <Flex align={'center'}>
+                <p>{user?.user?.email}</p>
+                <Button onClick={handleLogout}>Logout</Button>
+              </Flex>
+            )}
           </Group>
         </ScrollArea>
       </Drawer>

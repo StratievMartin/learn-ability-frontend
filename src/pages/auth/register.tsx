@@ -26,7 +26,9 @@ const Register = () => {
 
   const signUpHandler = async () => {
     try {
-      await signUp(user)
+      const res = await signUp(user)
+      console.log(res)
+
       navigate('/')
     } catch (error) {
       setError(error.message)

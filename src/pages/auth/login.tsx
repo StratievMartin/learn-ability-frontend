@@ -12,11 +12,15 @@ import {
 import { Link, useNavigate } from 'react-router-dom'
 import { signIn } from '../../services/authService'
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { saveUser } from '../../store/auth/actions'
 
 const Login = () => {
   const [user, setUser] = useState({})
   const navigate = useNavigate()
   const [error, setError] = useState(false)
+  //
+  const dispatch = useDispatch()
 
   const onInputChange = (e) => {
     setUser((prev) => ({
@@ -27,7 +31,11 @@ const Login = () => {
 
   const signInHandler = async () => {
     try {
-      await signIn(user)
+      const res = await signIn(user)
+      localStorage.setItem('user', JSON.stringify(res.data))
+      dispatch(saveUser(res.data))
+      console.log(res)
+
       navigate('/')
     } catch (error) {
       setError(error.message)
