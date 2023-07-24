@@ -22,6 +22,6 @@ export const deleteUser = async (id: string): Promise<AxiosResponse> => {
   return axios.delete(`${apiUrl}/${id}`)
 }
 
-export const refreshToken = async (rToken: string): Promise<AxiosResponse> => {
+export const renewToken = async (rToken: string): Promise<AxiosResponse> => {
   return axios.post(`${apiUrl}/auth/refresh`, rToken)
 }
