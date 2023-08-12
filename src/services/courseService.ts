@@ -8,6 +8,11 @@ export const getAllCourses = async (): Promise<AxiosResponse> => {
 export const getCourse = async (id: string): Promise<AxiosResponse> => {
   return axios.get(`${apiUrl}/${id}`)
 }
+export const getCoursesByKeyword = async (
+  keywordId: string
+): Promise<AxiosResponse> => {
+  return axios.get(`${apiUrl}/kwd/${keywordId}`)
+}
 export const addCourse = async (data: object): Promise<AxiosResponse> => {
   return axios.post(`${apiUrl}`, data)
 }
