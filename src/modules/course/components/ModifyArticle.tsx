@@ -1,41 +1,26 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import CourseContentList from '../../../modules/course/CourseContentList'
 import {
-  getCourse,
-  deleteCourse,
-  addCourse,
-  updateCourse,
-} from '../../../services/courseService'
-import { Button, Flex, Select, TextInput } from '@mantine/core'
+  getArticle,
+  deleteArticle,
+  addArticle,
+  updateArticle,
+} from '../../../services/articlesServices'
+import { Button, Flex, Select, TextInput, Textarea } from '@mantine/core'
 import { getAllKeywords } from '../../../services/keywordsService'
 import TextEditor from '../../common/components/TextEditor'
-import AccordionControl from '../../common/components/Accordion'
 
-const ModifyCourse = () => {
-  const [course, setCourse] = useState({
+const ModifyArticle = () => {
+  const [article, setArticle] = useState({
     id: 1,
     title: '',
     description: '',
-    price: '',
-    lectures: [],
     keyword: '',
+    content: '',
+    videoUrl: '',
+    imgUrl: '',
   })
   const [keywords, setKeywords] = useState([])
-  const [lectures, setLectures] = useState([
-    {
-      title: 'Lecture title',
-      content: 'Lecture content',
-      description: 'Lecture description',
-      videoUrl: 'https://www.youtube.com/embed/4YbOP-JI4Gs',
-    },
-    {
-      title: 'Lecture title 2',
-      content: 'Lecture content 2',
-      description: 'Lecture description 2',
-      videoUrl: 'https://www.youtube.com/embed/4YbOP-JI4Gs',
-    },
-  ])
   const params = useParams()
   const [error, setError] = useState(false)
 
@@ -48,17 +33,17 @@ const ModifyCourse = () => {
       setKeywords(mapped)
     })
     if (params.id) {
-      getCourse(params.id).then((res) => {
-        setCourse((prevCourse) => ({
-          ...prevCourse,
+      getArticle(params.id).then((res) => {
+        setArticle((prevArticle) => ({
+          ...prevArticle,
           ...res.data,
         }))
       })
     }
   }, [params.id])
 
-  const deleteCourseHandler = async (id: any) => {
-    await deleteCourse(id).then((res) => {
+  const deleteArticleHandler = async (id: any) => {
+    await deleteArticle(id).then((res) => {
       console.log(res)
     })
   }
@@ -66,55 +51,55 @@ const ModifyCourse = () => {
   const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (params.id) {
-      updateCourseHandler(params.id)
+      updateArticleHandler(params.id)
     } else {
-      addCourseHandler()
+      addArticleHandler()
     }
   }
 
   const onInputChange = (e: any) => {
     const { name, value } = e.target
-    setCourse((prev) => ({ ...prev, [name]: value }))
+    setArticle((prev) => ({ ...prev, [name]: value }))
     setError(false)
   }
 
   const handleSelect = (e: any) => {
-    setCourse((prev) => ({
+    setArticle((prev) => ({
       ...prev,
       keyword: e,
     }))
   }
 
-  const addCourseHandler = async () => {
+  const addArticleHandler = async () => {
     try {
-      await addCourse(course)
+      await addArticle(article)
     } catch (err: any) {
       setError(err.message)
     }
   }
 
-  const updateCourseHandler = async (id: any) => {
+  const updateArticleHandler = async (id: any) => {
     try {
-      await updateCourse(id, course)
+      await updateArticle(id, article)
     } catch (err: any) {
       setError(err.message)
     }
   }
 
-  const handleDescriptionChange = (value: any) => {
-    setCourse((prevCourse) => ({
-      ...prevCourse,
-      description: value,
+  const handleContentChange = (value: any) => {
+    setArticle((prevArticle) => ({
+      ...prevArticle,
+      content: value,
     }))
   }
 
   return (
     <div>
       <Flex align="baseline" gap={20}>
-        <h2>{course.title}</h2>
+        <h2>{article.title}</h2>
         <div>
           <p
-            onClick={() => deleteCourseHandler(course.id)}
+            onClick={() => deleteArticleHandler(article.id)}
             style={{ color: 'red', cursor: 'pointer' }}
           >
             X
@@ -127,7 +112,7 @@ const ModifyCourse = () => {
             <label htmlFor="title">Title</label>
             <TextInput
               onChange={onInputChange}
-              value={course.title}
+              value={article.title}
               type="text"
               name="title"
               id="title"
@@ -136,14 +121,37 @@ const ModifyCourse = () => {
             />
           </div>
           <div>
-            <label htmlFor="price">Price</label>
+            <label htmlFor="imgUrl">Image url</label>
             <TextInput
               onChange={onInputChange}
-              value={course.price}
+              value={article.imgUrl}
               type="text"
-              name="price"
-              id="price"
-              placeholder="Price..."
+              name="imgUrl"
+              id="imgUrl"
+              placeholder="Image url..."
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="videoUrl">Video url</label>
+            <TextInput
+              onChange={onInputChange}
+              value={article.videoUrl}
+              type="text"
+              name="videoUrl"
+              id="videoUrl"
+              placeholder="Video url..."
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="description">Description</label>
+            <Textarea
+              onChange={onInputChange}
+              value={article.description}
+              name="description"
+              id="description"
+              placeholder="Description..."
               required
             />
           </div>
@@ -156,25 +164,22 @@ const ModifyCourse = () => {
               data={keywords}
             />
           </div>
-
           <div>
-            <label htmlFor="description">Description</label>
+            <label htmlFor="content">Content</label>
             <TextEditor
-              value={course.description}
-              onChange={handleDescriptionChange}
+              value={article.content}
+              onChange={handleContentChange}
             />
           </div>
-
           {error ? <span style={{ color: 'red' }}>{error}</span> : ''}
           <div>
             <Button type="submit">Save</Button>
           </div>
         </form>
-        <CourseContentList />
+        {/* <ArticleContentList /> */}
       </div>
-      <AccordionControl lectures={lectures} />
     </div>
   )
 }
 
-export default ModifyCourse
+export default ModifyArticle

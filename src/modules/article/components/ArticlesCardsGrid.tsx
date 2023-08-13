@@ -7,6 +7,7 @@ import {
   Container,
   AspectRatio,
 } from '@mantine/core'
+import { Link } from 'react-router-dom'
 
 const mockdata = [
   {
@@ -51,34 +52,39 @@ const useStyles = createStyles((theme) => ({
   },
 }))
 
-const ArticlesCardsGrid = () => {
+const ArticlesCardsGrid = ({ articles }) => {
   const { classes } = useStyles()
-
-  const cards = mockdata.map((article) => (
-    <Card
-      key={article.title}
-      p="md"
-      radius="md"
-      component="a"
-      href="#"
-      className={classes.card}
-    >
-      <AspectRatio ratio={1920 / 1080}>
-        <Image src={article.image} />
-      </AspectRatio>
-      <Text color="dimmed" size="xs" transform="uppercase" weight={700} mt="md">
-        {article.date}
-      </Text>
-      <Text className={classes.title} mt={5}>
-        {article.title}
-      </Text>
-    </Card>
-  ))
 
   return (
     <Container py="xl">
       <SimpleGrid cols={2} breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
-        {cards}
+        {articles &&
+          articles.map((article) => (
+            <Link key={article.id} to={`/article/${article.id}`}>
+              <Card
+                key={article.title}
+                p="md"
+                radius="md"
+                className={classes.card}
+              >
+                <AspectRatio ratio={1920 / 1080}>
+                  <Image src={article.imgUrl} />
+                </AspectRatio>
+                <Text
+                  color="dimmed"
+                  size="xs"
+                  transform="uppercase"
+                  weight={700}
+                  mt="md"
+                >
+                  {article.date}
+                </Text>
+                <Text className={classes.title} mt={5}>
+                  {article.title}
+                </Text>
+              </Card>
+            </Link>
+          ))}
       </SimpleGrid>
     </Container>
   )

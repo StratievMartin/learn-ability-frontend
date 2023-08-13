@@ -116,7 +116,6 @@ const AppHeader = () => {
             className={classes.hiddenMobile}
           >
             <Logo className={classes.link} />
-
             <Link to="articles" className={classes.link}>
               Articles
             </Link>
@@ -125,6 +124,9 @@ const AppHeader = () => {
             </Link>
             <Link to="/courses/modify" className={classes.link}>
               Create a course
+            </Link>{' '}
+            <Link to="/articles/modify" className={classes.link}>
+              Create an article
             </Link>
           </Group>
           <Group className={classes.hiddenTablet}>
@@ -179,6 +181,7 @@ const AppHeader = () => {
             Profile
           </Link>
           <Link to="/courses/modify">Create a course</Link>
+          <Link to="/articles/modify">Create an article</Link>
 
           <Divider
             my="sm"

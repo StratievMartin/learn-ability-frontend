@@ -31,7 +31,7 @@ const Home = () => {
             </Group>
           )
         })}
-      <CardsCarousel data={courses} />
+      {courses.length > 0 && <CardsCarousel data={courses} />}
     </div>
   )
 }
