@@ -1,82 +1,88 @@
 import {
-  createStyles,
-  Container,
-  Title,
-  Text,
-  Button,
-  SimpleGrid,
-} from '@mantine/core'
-import { Link } from 'react-router-dom'
-import NotFoundImg from './NotFoundImg'
+    createStyles,
+    Container,
+    Title,
+    Text,
+    Button,
+    SimpleGrid,
+} from '@mantine/core';
+import { Link } from 'react-router-dom';
+import NotFoundImg from './NotFoundImg';
 
 const useStyles = createStyles((theme) => ({
-  root: {
-    paddingTop: '80px',
-    paddingBottom: '80px',
-  },
-
-  title: {
-    fontWeight: 900,
-    fontSize: '34px',
-    marginBottom: theme.spacing.md,
-    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-
-    [theme.fn.smallerThan('sm')]: {
-      fontSize: '32px',
+    root: {
+        paddingTop: '80px',
+        paddingBottom: '80px',
     },
-  },
 
-  control: {
-    [theme.fn.smallerThan('sm')]: {
-      width: '100%',
-    },
-  },
+    title: {
+        fontWeight: 900,
+        fontSize: '34px',
+        marginBottom: theme.spacing.md,
+        fontFamily: `Greycliff CF, ${theme.fontFamily}`,
 
-  mobileImage: {
-    [theme.fn.largerThan('sm')]: {
-      display: 'none',
+        [theme.fn.smallerThan('sm')]: {
+            fontSize: '32px',
+        },
     },
-  },
 
-  desktopImage: {
-    [theme.fn.smallerThan('sm')]: {
-      display: 'none',
+    control: {
+        [theme.fn.smallerThan('sm')]: {
+            width: '100%',
+        },
     },
-  },
-}))
+
+    mobileImage: {
+        [theme.fn.largerThan('sm')]: {
+            display: 'none',
+        },
+    },
+
+    desktopImage: {
+        [theme.fn.smallerThan('sm')]: {
+            display: 'none',
+        },
+    },
+}));
 
 const NotFound = () => {
-  const { classes } = useStyles()
+    const { classes } = useStyles();
 
-  return (
-    <Container className={classes.root}>
-      <SimpleGrid
-        spacing={80}
-        cols={2}
-        breakpoints={[{ maxWidth: 'sm', cols: 1, spacing: 40 }]}
-      >
-        <NotFoundImg />
-        <div>
-          <Title className={classes.title}>Something is not right...</Title>
-          <Text color="dimmed" size="lg">
-            Page you are trying to open does not exist. You may have mistyped
-            the address, or the page has been moved to another URL. If you think
-            this is an error contact support.
-          </Text>
-          <Link to="/">
-            <Button
-              variant="outline"
-              size="md"
-              mt="xl"
-              className={classes.control}
+    return (
+        <Container className={classes.root}>
+            <SimpleGrid
+                spacing={80}
+                cols={2}
+                breakpoints={[{ maxWidth: 'sm', cols: 1, spacing: 40 }]}
             >
-              Get back to home page
-            </Button>
-          </Link>
-        </div>
-        {/* <Image src="assets/images/404.svg" className={classes.desktopImage} /> */}
-      </SimpleGrid>
-    </Container>
-  )
-}
-export default NotFound
+                <NotFoundImg />
+
+                <div>
+                    <Title className={classes.title}>
+                        Something is not right...
+                    </Title>
+
+                    <Text color="dimmed" size="lg">
+                        Page you are trying to open does not exist. You may have
+                        mistyped the address, or the page has been moved to
+                        another URL. If you think this is an error contact
+                        support.
+                    </Text>
+
+                    <Link to="/">
+                        <Button
+                            variant="outline"
+                            size="md"
+                            mt="xl"
+                            className={classes.control}
+                        >
+                            Get back to home page
+                        </Button>
+                    </Link>
+                </div>
+                {/* <Image src="assets/images/404.svg" className={classes.desktopImage} /> */}
+            </SimpleGrid>
+        </Container>
+    );
+};
+export default NotFound;

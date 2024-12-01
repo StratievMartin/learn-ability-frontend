@@ -1,20 +1,20 @@
-import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { saveUser } from '../store/auth/actions'
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { saveUser } from '../store/auth/actions';
 
 const AuthWrapper = ({ children }) => {
-  const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
-  useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem('user'))
-    if (storedUser) {
-      console.log('local', storedUser)
+    useEffect(() => {
+        const storedUser = JSON.parse(localStorage.getItem('user'));
+        if (storedUser) {
+            console.log('local', storedUser);
 
-      dispatch(saveUser(storedUser))
-    }
-  }, [dispatch])
+            dispatch(saveUser(storedUser));
+        }
+    }, [dispatch]);
 
-  return <>{children}</>
-}
+    return <>{children}</>;
+};
 
-export default AuthWrapper
+export default AuthWrapper;

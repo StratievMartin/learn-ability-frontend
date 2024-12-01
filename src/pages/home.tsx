@@ -1,38 +1,41 @@
-import { useEffect, useState } from 'react'
-import { getAllCourses } from '../services/courseService'
-import { getAllKeywords } from '../services/keywordsService'
-import CardsCarousel from '../modules/common/components/Carousel'
-import HeaderLanding from '../modules/header/components/HeaderLanding'
-import { Link } from 'react-router-dom'
-import { Group } from '@mantine/core'
+import { useEffect, useState } from 'react';
+import { getAllCourses } from '../services/courseService';
+import { getAllKeywords } from '../services/keywordsService';
+import CardsCarousel from '../modules/common/components/Carousel';
+import HeaderLanding from '../modules/header/components/HeaderLanding';
+import { Link } from 'react-router-dom';
+import { Group } from '@mantine/core';
 
 const Home = () => {
-  const [courses, setCourses] = useState([])
-  const [keywords, setKeywords] = useState([])
+    const [courses, setCourses] = useState([]);
+    const [keywords, setKeywords] = useState([]);
 
-  useEffect(() => {
-    getAllCourses().then((res) => {
-      setCourses(res.data)
-    })
-    getAllKeywords().then((res) => {
-      setKeywords(res.data)
-    })
-  }, [])
+    useEffect(() => {
+        getAllCourses().then((res) => {
+            setCourses(res.data);
+        });
 
-  return (
-    <div>
-      <HeaderLanding />
-      Keywords:
-      {keywords &&
-        keywords.map((kwd) => {
-          return (
-            <Group key={kwd.id} spacing={5}>
-              <Link to={`courses/kwd/${kwd.id}`}>{kwd.title}</Link>
-            </Group>
-          )
-        })}
-      {courses.length > 0 && <CardsCarousel data={courses} />}
-    </div>
-  )
-}
-export default Home
+        getAllKeywords().then((res) => {
+            setKeywords(res.data);
+        });
+    }, []);
+
+    return (
+        <div>
+            <HeaderLanding />
+            Keywords:
+            {keywords &&
+                keywords.map((kwd) => {
+                    return (
+                        <Group key={kwd.id} spacing={5}>
+                            <Link to={`courses/kwd/${kwd.id}`}>
+                                {kwd.title}
+                            </Link>
+                        </Group>
+                    );
+                })}
+            {courses.length > 0 && <CardsCarousel data={courses} />}
+        </div>
+    );
+};
+export default Home;
